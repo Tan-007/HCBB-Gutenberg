@@ -1,0 +1,26 @@
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+
+// Colors.
+$black: rgb(41, 41, 41);
+$white: #f4f4f4;
+$gray: #dedede;
+$green: #bada55;
+$red: orangered;
+
+// custom colors
+$c_title__text: #164C83;
+
+// font-size
+$fs_base: 14px;
+
+// line height
+$lh_base: 14px;
+
+// font-families
+$ff_montserrat: 'Avenir', sans-serif;
+$ff_josefin: 'Josefin sans', sans-serif;

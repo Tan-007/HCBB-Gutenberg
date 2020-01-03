@@ -1,0 +1,12 @@
+# editor file
+/.vscode
+
+#plugins node_modules
+/plugins/hcbb-blocks/node_modules
+
+#themes
+themes/twentynineteen
+themes/twentyseventeen
+themes/twentysixteen
+themes/twentytwenty
+themes/blank-theme/assets/node_modules

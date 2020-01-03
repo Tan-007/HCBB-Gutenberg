@@ -1,0 +1,62 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-hcbb-blocks-section-title  {
+  
+  .title__text {
+    overflow: hidden;
+    color: $c_title__text;
+    text-align: center;
+    font-size: 2.8 * $fs_base;
+    padding: 10px 20px;
+
+    &::before, &::after {
+      content: '';
+      display: inline-block;
+      position: relative;
+      height: 2px;
+      width: 0;
+      vertical-align: middle;
+      background-color: $c_title__text;
+    }
+    
+    &::before {
+      right: 0.5em;
+      margin-left: -50%;
+    }
+    
+    &::after {
+      left: 0.5em;
+      margin-right: -50%;
+    }
+    // animation 
+    &.animate-title::before, 
+    &.animate-title::after {
+      animation: 1s animate-title ease-in forwards;
+    }
+    // when url is inserted
+    a {
+      color: $c_title__text;
+      text-decoration: none !important;
+
+      &:hover {
+        opacity: 0.8;
+      }
+    }
+  }
+}
+
+
+/**
+ * Animations
+ */ 
+@keyframes animate-title {
+  from {
+    width: 0;
+  } to { 
+    width: 50%;
+  }
+}

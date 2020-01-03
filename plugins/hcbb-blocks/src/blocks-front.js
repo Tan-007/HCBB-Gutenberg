@@ -1,0 +1,1 @@
+import './block-cover/js/main.js';

@@ -1,0 +1,47 @@
+/**
+ * #.# Styles
+ *
+ * CSS for both Frontend+Backend.
+ */
+
+.wp-block-hcbb-blocks-cover  {
+  margin: 0;
+
+  .block-wrapper {
+    text-align: center;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    .block {
+      display: inline-block;
+      margin: 50px;
+      padding: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      color: $white;
+      max-width: 60%;
+
+      .block__header {
+        font-family: $ff_josefin;
+        font-size: 3 * $fs_base;
+        text-align: center;
+        margin: 20px 0 10px 0;
+
+        &:before {
+          content: none;
+        }
+      }
+
+      .block__desc {
+        font-family: $ff_josefin;
+        font-size: $fs_base;
+        line-height: 2 * $lh_base;
+        text-align: center;
+      }
+
+    }
+
+  }
+
+}
