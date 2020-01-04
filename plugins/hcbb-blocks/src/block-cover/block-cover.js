@@ -12,7 +12,7 @@ import './style.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { RichText, InspectorControls } = wp.editor; // Import RichText from wp.block-editor
-const { PanelBody, ColorPalette } = wp.components; // import ColorPicker from wp.components
+const { PanelBody, ColorPalette, Button } = wp.components; // import ColorPicker from wp.components
 const { MediaPlaceholder } = wp.blockEditor;
 /**
  * Register: aa Gutenberg Block.
@@ -276,6 +276,13 @@ registerBlockType( 'hcbb-blocks/cover', {
 							allowedTypes = { [ 'image' ] }
 							multiple     = { false }
 						>
+							<button
+								type    = "button" 
+								class   = "components-button editor-media-placeholder__button editor-media-placeholder__media-library-button is-button is-default is-large"
+								onClick = { ( event ) => { setAttributes( { backgroundUrl: '' } ); } }
+							> 
+								{ __( 'Clear image', 'hcbb-blocks' ) }
+							</button>
 						</MediaPlaceholder>
 					</PanelBody>
 					
