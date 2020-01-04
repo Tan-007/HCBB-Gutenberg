@@ -10,3 +10,6 @@ themes/twentyseventeen
 themes/twentysixteen
 themes/twentytwenty
 themes/blank-theme/assets/node_modules
+
+# uploads directory
+/uploads

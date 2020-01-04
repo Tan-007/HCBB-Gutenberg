@@ -82,21 +82,7 @@ function hcbb_section_title_block_assets() {
 			'editor_style'  => 'section-title-block-editor-css',
 		)
 	);
-	
-}
 
-
-/**
- * We don't need to register all the `dist/builds` because they are already
- * registered once above for all the blocks. 
- *
- * @uses {wp-blocks} for block type registration & related functions.
- * @uses {wp-element} for WP Element abstraction — structure of blocks.
- * @uses {wp-i18n} to internationalize the block's text.
- * @uses {wp-editor} for WP editor styles.
- * @since 1.1.0
- */
-function hcbb_cover_block_assets() {
 	/**	
 	 * Register the block on server-side to ensure that the block
 	 * scripts and styles for both frontend and backend are
@@ -116,7 +102,30 @@ function hcbb_cover_block_assets() {
 		)
 	);
 	
+	/**	
+	 * Register the block on server-side to ensure that the block
+	 * scripts and styles for both frontend and backend are
+	 * enqueued when the editor loads.
+	 *
+	 * @link https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type#enqueuing-block-scripts
+	 * @since 1.2.0
+	 */
+	register_block_type(
+		'hcbb-blocks/posts-slider', array(
+			// Enqueue blocks.style.build.css on both frontend & backend.
+			'style'           => 'section-title-style-css',
+			// Enqueue blocks.build.js in the editor only.
+			'editor_script'   => 'section-title-block-js',
+			// Enqueue blocks.editor.build.css in the editor only.
+			'editor_style'    => 'section-title-block-editor-css',
+			// render functino for displaying posts
+			'render_callback' => 'hcbb_render_posts_slider',
+		)
+	);
+	
+
 }
+
 
 /**
  * The function registers a custom block category named 'HCBB Blocks'
@@ -164,11 +173,34 @@ function hcbb_section_title_register_fscript() {
 // Hook: Block assets for block 'section-title'
 add_action( 'init', 'hcbb_section_title_block_assets' );
 
-// Hook: Block assets for block 'cover'
-add_action( 'init', 'hcbb_cover_block_assets' );
-
 // Hook: Custom category.
 add_filter( 'block_categories', 'hcbb_register_category', 10, 2 );
 
 // Hook: front-end scripts
 add_action( 'wp_enqueue_scripts', 'hcbb_section_title_register_fscript' );
+
+function hcbb_render_posts_slider( $attributes, $content ) {
+	
+	$html = '';
+	$args = array(
+		'post_type' 	 => 'post',
+	);
+	
+	$query = new wp_query( $args );
+	
+	$html .= '<div class="wp-block-hcbb-blocks-posts-slider">';
+	
+	if ( $query -> have_posts() ):
+		while ( $query -> have_posts() ):
+			$query -> the_post();
+
+			$html .= get_the_post_thumbnail();
+
+		endwhile;
+	endif;
+
+	$html .= '</div>';
+
+	return ( $html );
+
+}
