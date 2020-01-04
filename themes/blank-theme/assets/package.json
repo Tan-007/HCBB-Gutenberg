@@ -2,7 +2,7 @@
 	"name": "hcbb-theme",
 	"version": "1.0.0",
 	"description": "HCBB-Theme Packages",
-	"author": "rtCamp",
+	"author": "RahiDroid",
 	"license": "MIT",
 	"private": true,
 	"scripts": {
