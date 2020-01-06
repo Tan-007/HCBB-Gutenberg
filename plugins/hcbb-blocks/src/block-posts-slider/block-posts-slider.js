@@ -80,7 +80,32 @@ registerBlockType( 'hcbb-blocks/posts-slider', {
 			selectedCategory,
 		} = props;
 
-		return 'loading';
+		return (
+			<div className = { className }>
+				<div className = "grid-wrapper">
+					<div className = "grid">
+						<div className = "grid__item">
+							<img src = { `${ cgbGlobal.pluginDirUrl }/src/assets/images/grey-square.jpg` }></img>
+						</div>
+						<div className = "grid__item">
+							<img src = { `${ cgbGlobal.pluginDirUrl }/src/assets/images/grey-square.jpg` }></img>
+						</div>
+						<div className = "grid__item">
+							<img src = { `${ cgbGlobal.pluginDirUrl }/src/assets/images/grey-square.jpg` }></img>
+						</div>
+						<div className = "grid__item">
+							<img src = { `${ cgbGlobal.pluginDirUrl }/src/assets/images/grey-square.jpg` }></img>
+						</div>
+						<div className = "grid__item">
+							<img src = { `${ cgbGlobal.pluginDirUrl }/src/assets/images/grey-square.jpg` }></img>
+						</div>
+						<div className = "grid__item">
+							<img src = { `${ cgbGlobal.pluginDirUrl }/src/assets/images/grey-square.jpg` }></img>
+						</div>
+					</div>
+				</div>
+			</div>
+		);
 	},
 	/**
 	 * The save function defines the way in which the different attributes should be combined

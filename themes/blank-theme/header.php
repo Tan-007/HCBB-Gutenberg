@@ -23,7 +23,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'blank-theme' ); ?></a>
 
 	<header id="masthead" class="site-header grid-container grid-container-padded" role="banner">
-		<div class="row grid-x grid-margin-x">
+		<div class="grid-x grid-margin-x">
 			<div class="site-branding shrink cell column">
 				<?php
 				$title_class = false;
@@ -81,4 +81,4 @@
 	</header><!-- #masthead -->
 
 	<div class="grid-container grid-container-padded">
-		<div id="content" class="site-content row grid-x grid-margin-x">
+		<div id="content" class="site-content grid-x grid-margin-x">

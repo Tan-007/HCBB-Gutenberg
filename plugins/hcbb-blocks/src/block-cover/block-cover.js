@@ -12,7 +12,7 @@ import './style.scss';
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
 const { RichText, InspectorControls } = wp.editor; // Import RichText from wp.block-editor
-const { PanelBody, ColorPalette, Button } = wp.components; // import ColorPicker from wp.components
+const { PanelBody, ColorPalette } = wp.components; // import ColorPicker from wp.components
 const { MediaPlaceholder } = wp.blockEditor;
 /**
  * Register: aa Gutenberg Block.

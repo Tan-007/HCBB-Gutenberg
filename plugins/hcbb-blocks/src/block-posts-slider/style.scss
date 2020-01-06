@@ -5,5 +5,75 @@
  */
 
 .wp-block-hcbb-blocks-posts-slider  {
-  
+    margin: 30px 0;
+
+    .carousel {
+
+        .carousel-control.left,
+        .carousel-control.right {
+            color: $gray;
+            background-image: none;
+        }
+
+        .carousel-control.left {
+            left: -8%;
+        }
+        .carousel-control.right {
+            right: -8%;
+        }
+
+        .grid-wrapper {
+
+            .grid {
+                display: grid;
+                grid-template-columns: $block_width $block_width $block_width;
+                grid-template-rows: $block_height $block_height;
+                grid-column-gap: $grid_gap;
+                grid-row-gap: $grid_gap;
+                padding: 10px 0 30px 0;
+                justify-content: center;
+
+                @media screen and (max-width: $g-breakpoint-desktop) {
+                    grid-template-columns: $block_width - 50px $block_width - 50px $block_width - 50px;
+                    grid-template-rows: $block_height - 50px $block_height - 50px;
+                }
+
+                @media screen and (max-width: $g-breakpoint-tablet) {
+                    grid-template-columns: $block_width - 50px $block_width - 50px;
+                    grid-template-rows: $block_height - 50px $block_height - 50px $block_height - 50px;
+                }
+                
+                @media screen and (max-width: $g-breakpoint-mobile) {
+                    grid-template-columns: $block_width - 100px $block_width - 100px;
+                    grid-template-rows: $block_height - 100px $block_height - 100px $block_height - 100px;
+                    
+                }
+                .grid__item {
+                    overflow: hidden;
+                    background-color: $gray;
+                    display: block;
+                    height: $block_height;
+                    width: $block_width;
+                    background-position: center;
+                    background-size: cover;
+                    background-repeat: no-repeat;
+                    border-radius: 10px;
+                    box-shadow: 0 8px 11px rgba(0, 0, 0, 0.5);
+
+                    @media screen and (max-width: $g-breakpoint-desktop) {
+                        height: $block_height - 50px;
+                        width: $block_width - 50px;
+                    }
+
+                    @media screen and (max-width: $g-breakpoint-mobile) {
+                        height: $block_height - 100px;
+                        width: $block_width - 100px;
+                    }
+                }
+
+            }
+
+        }
+    }
+
 }

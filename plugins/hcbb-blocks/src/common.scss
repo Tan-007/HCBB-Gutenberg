@@ -24,3 +24,16 @@ $lh_base: 14px;
 // font-families
 $ff_montserrat: 'Avenir', sans-serif;
 $ff_josefin: 'Josefin sans', sans-serif;
+
+// break-points
+// Project specific breakpoints.
+$g-breakpoint-mobile        : 568px;
+$g-breakpoint-small-tablet  : 667px;
+$g-breakpoint-tablet        : 768px;
+$g-breakpoint-desktop       : 1024px;
+$g-breakpoint-large-desktop : 1280px;
+
+// grid vars
+$block_height: 250px;
+$block_width: 250px;
+$grid_gap: 30px;
