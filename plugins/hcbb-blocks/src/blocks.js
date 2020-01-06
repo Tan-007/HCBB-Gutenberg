@@ -13,3 +13,4 @@
 import './block-section-title/block-section-title.js';
 import './block-cover/block-cover.js';
 import './block-posts-slider/block-posts-slider.js';
+import './block-contact-us/block-contact-us.js';

@@ -128,6 +128,25 @@ function hcbb_section_title_block_assets() {
 			'render_callback' => 'hcbb_render_posts_slider',
 		)
 	);
+
+	/**	
+	 * Register the block on server-side to ensure that the block
+	 * scripts and styles for both frontend and backend are
+	 * enqueued when the editor loads.
+	 *
+	 * @link https://wordpress.org/gutenberg/handbook/blocks/writing-your-first-block-type#enqueuing-block-scripts
+	 * @since 1.4.0
+	 */
+	register_block_type(
+		'hcbb-blocks/contact-us', array(
+			// Enqueue blocks.style.build.css on both frontend & backend.
+			'style'           => 'section-title-style-css',
+			// Enqueue blocks.build.js in the editor only.
+			'editor_script'   => 'section-title-block-js',
+			// Enqueue blocks.editor.build.css in the editor only.
+			'editor_style'    => 'section-title-block-editor-css',
+		)
+	);
 	
 
 }
