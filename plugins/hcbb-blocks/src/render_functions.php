@@ -74,3 +74,7 @@ function hcbb_render_posts_slider( $attributes, $content ) {
 	return ( $html );
 
 }
+
+function hcbb_render_pages_section( $attributes, $content ) {
+	return print_r( $attributes, true );
+}

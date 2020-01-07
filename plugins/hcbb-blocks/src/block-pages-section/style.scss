@@ -4,45 +4,54 @@
  * CSS for both Frontend+Backend.
  */
 
-.wp-block-hcbb-blocks-cover  {
-  margin: 0;
+.wp-block-hcbb-blocks-pages  {
+  
+  .pages-wrapper {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    grid-column-gap: 20px;
 
-  .block-wrapper {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+    .page {
+      padding: 10px;
 
-    .block {
-      display: inline-block;
-      margin: 50px;
-      padding: 20px;
-      color: $white;
-      max-width: 60%;
+      .page__icon {
+        display: flex;
+        justify-content: center;
+        height: 100px;
+        width: 100%;
 
-      .block__header {
-        font-family: $ff_josefin;
-        font-size: 3 * $fs_base;
-        text-align: center;
-        margin: 20px 0 10px 0;
+        .icon-container {
+          position: relative;
+          height: 100px;
+          width: 100px;
+          border-radius: 50%;
+          border: 2px dotted $cu_header_color;
+          overflow: hidden;
+          
+          .hover-text {
+            display: none;
+          }
 
-        &:before {
-          content: none;
         }
+
       }
 
-      .block__desc {
+      .page__title {
+        color: $cu_header_color;
+        font-size: 1.5 * $fs_base;
         font-family: $ff_josefin;
+        text-align: center;
+        margin: 20px 0 10px;
+      }
+
+      .page__excerpt {
+        color: $fc_default;
         font-size: $fs_base;
-        line-height: 2 * $lh_base;
+        font-family: $ff_josefin;
         text-align: center;
       }
-
     }
 
-  }
+}
 
 }

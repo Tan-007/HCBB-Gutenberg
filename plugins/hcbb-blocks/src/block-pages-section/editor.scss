@@ -5,6 +5,62 @@
  * which makes it higher in priority.
  */
 
- .wp-block-hcbb-blocks-cover {
+ .wp-block-hcbb-blocks-pages {
+    
+    .pages-wrapper {
+        .page {
+            border: 2px dotted $cu_header_color;
+            box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
 
+            .page__icon {
+
+                .icon-container {
+                    margin-top: 20px;
+                    
+                    &:hover .hover-text {
+                        opacity: 1;
+                        color: $cu_header_color;
+                    }
+                    
+                    .hover-text {
+                        position: absolute;
+                        top: 0; left: 0; right: 0; bottom: 0;
+                        transition: 0.5s opacity ease;
+                        opacity: 0;
+                        background: rgba(255, 255, 255, 0.9);
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        font-size: $fs_base;
+                        font-family: $ff_josefin;
+                        padding: 0 5px;
+
+                        &:hover {
+                            cursor: pointer;
+                        }
+                    }
+
+                    img {
+                        display: block;
+                        height: 100%;
+                        object-fit: cover;
+                        object-position: center;
+
+                    }
+
+                    .button {
+                        height: 100%;
+                        width: 100%;
+                        padding: 0;
+                        border: none;
+
+                        &:focus {
+                            border: none;
+                        }
+                      }
+                    
+                }
+            }
+        }
+    }
 }

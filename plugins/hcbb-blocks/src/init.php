@@ -16,7 +16,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 /**
  * import required files
  */
-require dirname( __FILE__ ) . '/block-posts-slider/function.php';
+require dirname( __FILE__ ) . '/render_functions.php';
 
 /**
  * Enqueue Gutenberg block assets for block 'section-title' for both frontend + backend.
@@ -124,7 +124,7 @@ function hcbb_section_title_block_assets() {
 			// Enqueue blocks.editor.build.css in the editor only.
 			'editor_style'    => 'section-title-block-editor-css',
 			// render functino for displaying posts
-			// function in: ./block-posts-slider/function.php
+			// function in: ./render_functions.php
 			'render_callback' => 'hcbb_render_posts_slider',
 		)
 	);
@@ -164,6 +164,15 @@ function hcbb_section_title_block_assets() {
 			'editor_script'   => 'section-title-block-js',
 			// Enqueue blocks.editor.build.css in the editor only.
 			'editor_style'    => 'section-title-block-editor-css',
+			// renders on front-end
+			// function in: ./render_functions.php
+			'render_callback' => 'hcbb_render_pages_section',
+			'attributes'      => [
+				'hello' => [
+					'type'  => 'string',
+					'default' => 'helo',
+				],
+			],
 		)
 	);
 	
