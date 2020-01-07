@@ -4,45 +4,72 @@
  * CSS for both Frontend+Backend.
  */
 
-.wp-block-hcbb-blocks-cover  {
-  margin: 0;
+.card__details--text {
+    font-size: $fs_base;
+    font-family: $ff_josefin;
+    margin: 20px 10px;
+    letter-spacing: 2px;
+    line-height: 5px + $lh_base;
+    font-weight: 400;
+}
 
-  .block-wrapper {
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-position: center !important;
-    background-repeat: no-repeat !important;
-    background-size: cover !important;
+.wp-block-hcbb-blocks-contact {
+    display: grid;
+    grid-template-columns: 50% 50%;
+    grid-column-gap: 30px;
+    margin: 30px 0;
 
-    .block {
-      display: inline-block;
-      margin: 50px;
-      padding: 20px;
-      color: $white;
-      max-width: 60%;
-
-      .block__header {
-        font-family: $ff_josefin;
-        font-size: 3 * $fs_base;
-        text-align: center;
-        margin: 20px 0 10px 0;
-
-        &:before {
-          content: none;
-        }
-      }
-
-      .block__desc {
-        font-family: $ff_josefin;
-        font-size: $fs_base;
-        line-height: 2 * $lh_base;
-        text-align: center;
-      }
-
+    @media screen and (max-width: $g-breakpoint-small-tablet) {
+        grid-template-columns: 100%;
+        grid-template-rows: auto auto;
+        grid-column-gap: 0;
+        grid-row-gap: 30px;
     }
 
-  }
+    .contact.card {
+        padding: 0;
+        margin: 0;
+        background: $bg_card;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 
+        .card__header {
+            overflow: hidden;
+            border-top-left-radius: 20px;
+
+            .card__header--text {
+                font-size: 2 * $fs_base;
+                font-family: $ff_josefin;
+                background-color: $cu_header_color;
+                color: $white;
+                padding: 20px 0 20px 30px;
+                margin: 0;
+                font-weight: 400;
+            }
+
+        }
+
+        .card__details {
+            padding: 10px 10px 10px 20px;
+
+            .card__details--address {
+                @extend .card__details--text;
+            }
+
+            .card__details--phone {
+                @extend .card__details--text;
+            }
+
+            .card__details--email {
+                @extend .card__details--text;
+            }
+        }
+    }
+
+    .contact.map {
+        overflow: hidden;
+        max-height: 300px;
+        box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+
+    }
+  
 }

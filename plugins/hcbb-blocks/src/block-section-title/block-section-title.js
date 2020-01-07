@@ -39,8 +39,16 @@ registerBlockType( 'hcbb-blocks/section-title', {
 		__( 'hcbb-blocks — CGB Block' ),
 		__( 'CGB Example' ),
 	],
+	supports: {
+		align: true,
+		align: ['wide'],
+	},
 	// custom attributes
 	attributes: {
+		align: {
+			type   : 'string',
+			default: 'wide',
+		},
 		// stores the title text
 		title_text: {
 			type    : 'string',

@@ -5,6 +5,7 @@
  */
 
 .wp-block-hcbb-blocks-section-title  {
+
   
   .title__text {
     overflow: hidden;
@@ -12,6 +13,9 @@
     text-align: center;
     font-size: 2.8 * $fs_base;
     padding: 10px 20px;
+    max-width: 750px;
+    margin: auto;
+    
 
     &::before, &::after {
       content: '';

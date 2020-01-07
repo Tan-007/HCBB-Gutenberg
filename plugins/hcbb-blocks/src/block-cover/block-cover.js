@@ -11,9 +11,9 @@ import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-const { RichText, InspectorControls } = wp.editor; // Import RichText from wp.block-editor
+const { InspectorControls } = wp.editor; // Import RichText from wp.block-editor
 const { PanelBody, ColorPalette } = wp.components; // import ColorPicker from wp.components
-const { MediaPlaceholder } = wp.blockEditor;
+const { MediaPlaceholder, RichText } = wp.blockEditor;
 /**
  * Register: aa Gutenberg Block.
  *
@@ -47,11 +47,16 @@ registerBlockType( 'hcbb-blocks/cover', {
 	// supports
 	supports: {
 		align: true,
-		align: ['wide']
+		align: ['wide'],
 	},
 
 	// custom attributes
 	attributes: {
+		// set default alignment to wide
+		align: {
+			type   : 'string',
+			default: 'wide',
+		},
 		// stores the block's header
 		block_header: {
 			type    : 'string',

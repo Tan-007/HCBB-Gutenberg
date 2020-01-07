@@ -1,1 +1,1 @@
-import './block-cover/js/main.js';
+import './block-section-title/js/main.js';

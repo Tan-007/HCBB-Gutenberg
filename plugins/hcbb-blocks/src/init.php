@@ -138,7 +138,7 @@ function hcbb_section_title_block_assets() {
 	 * @since 1.4.0
 	 */
 	register_block_type(
-		'hcbb-blocks/contact-us', array(
+		'hcbb-blocks/contact', array(
 			// Enqueue blocks.style.build.css on both frontend & backend.
 			'style'           => 'section-title-style-css',
 			// Enqueue blocks.build.js in the editor only.
@@ -182,9 +182,9 @@ function hcbb_register_category( $categories, $post ) {
  */
 
 function hcbb_section_title_register_fscript() {
-
+	
 	// bootstrap
-	wp_enqueue_style('bootstrap4', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css');
+	wp_enqueue_style( 'bootstrap4', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css' );
     wp_enqueue_script( 'boot2','https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js', array( 'jquery' ),'',true );
     wp_enqueue_script( 'boot3','https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js', array( 'jquery' ),'',true );
 
