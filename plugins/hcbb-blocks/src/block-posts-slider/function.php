@@ -15,6 +15,7 @@ function hcbb_render_posts_slider( $attributes, $content ) {
 	$html = '';
 	$args = array(
 		'post_type' 	 => 'post',
+		'posts_per_page' => '999',
 	);
 
 	$query = new wp_query( $args );
