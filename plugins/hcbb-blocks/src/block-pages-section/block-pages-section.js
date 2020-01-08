@@ -74,7 +74,7 @@ registerBlockType( 'hcbb-blocks/pages', {
 			type: 'string',
 		},
 		sPage1: {
-			type: 'strings',
+			type: 'string',
 		},
 		sPage2: {
 			type: 'string',
@@ -153,6 +153,22 @@ registerBlockType( 'hcbb-blocks/pages', {
 			}
 		};
 
+		/**
+		 * function generates options for the pages dropdown and returns it
+		 * 
+		 * @returns {Array} array containing all the options
+		 */
+		const getSelectControlOptions = () => {
+			// value: custom JSON, it's very custom and error prone. I couldn't get to a solution for this problem.
+			// having value: null, would cause JSON.parse() to fail, that's why.
+			let options = [ { value: '{"title":{"rendered":"No title"},"page_excerpt":{"rendered":"Select a page"}}', label: 'Select a Page', default: true } ];
+				pages.map(( page ) => {
+				options.push( { value: JSON.stringify( page ), label: '' !== page.title ? page.title.rendered : "(No title)" } );
+			})
+
+			return options;
+		}
+
 			if ( ! pages ) {
 				return 'Loading...';
 			}
@@ -173,11 +189,7 @@ registerBlockType( 'hcbb-blocks/pages', {
 									label    = { __( 'Select page to display:' ) }
 									value    = { sPage1 ? sPage1 : null }
 									onChange = { ( page ) => { setAttributes( { sPage1: page } ) } }
-									options  = {
-										pages.map(( page ) => {
-											return { value: JSON.stringify( page ), label: page.title ? page.title.rendered : "No title" };
-										})
-									}
+									options  = { getSelectControlOptions() }
 								/>
 							</div>
 
@@ -195,7 +207,9 @@ registerBlockType( 'hcbb-blocks/pages', {
 								{ sPage1 ? JSON.parse(sPage1).title.rendered : "" }
 							</div>
 
-							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: sPage1 ? JSON.parse(sPage1).excerpt.rendered : "No content" } } />
+							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
+								( sPage1 && JSON.parse(sPage1).excerpt ) ? JSON.parse(sPage1).excerpt.rendered : "No content" ) } } 
+							/>
 
 						</div>
 						
@@ -207,11 +221,7 @@ registerBlockType( 'hcbb-blocks/pages', {
 									label    = { __( 'Select page to display:' ) }
 									value    = { sPage2 ? sPage2 : null }
 									onChange = { ( page ) => { setAttributes( { sPage2: page } ) } }
-									options  = {
-										pages.map(( page ) => {
-											return { value: JSON.stringify( page ), label: page.title ? page.title.rendered : "No title" };
-										})
-									}
+									options  = { getSelectControlOptions() }
 								/>
 							</div>
 
@@ -229,8 +239,9 @@ registerBlockType( 'hcbb-blocks/pages', {
 								{ sPage2 ? JSON.parse(sPage2).title.rendered : "" }
 							</div>
 
-							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: sPage2 ? JSON.parse( sPage2 ).excerpt.rendered : "No title" } } />
-
+							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
+								( sPage2 && JSON.parse(sPage2).excerpt ) ? JSON.parse(sPage2).excerpt.rendered : "No content" ) } } 
+							/>
 						</div>
 
 						{/* Page 3 */}
@@ -241,11 +252,7 @@ registerBlockType( 'hcbb-blocks/pages', {
 									label    = { __( 'Select page to display:' ) }
 									value    = { sPage3 ? sPage3 : null }
 									onChange = { ( page ) => { setAttributes( { sPage3: page } ) } }
-									options  = {
-										pages.map(( page ) => {
-											return { value: JSON.stringify( page ), label: page.title ? page.title.rendered : "No title" };
-										})
-									}
+									options  = { getSelectControlOptions() }
 								/>
 							</div>
 
@@ -263,8 +270,9 @@ registerBlockType( 'hcbb-blocks/pages', {
 								{ sPage3 ? JSON.parse( sPage3 ).title.rendered : "" }
 							</div>
 
-							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: sPage3? JSON.parse( sPage3 ).excerpt.rendered : "No title" } } />
-
+							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
+								( sPage3 && JSON.parse(sPage3).excerpt ) ? JSON.parse(sPage3).excerpt.rendered : "No content" ) } } 
+							/>
 						</div>
 					</div>
 				</div>
