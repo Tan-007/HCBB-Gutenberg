@@ -1,6 +1,9 @@
 # editor file
 /.vscode
 
+# plugins
+/plugins/akismet
+
 #plugins node_modules
 /plugins/hcbb-blocks/node_modules
 
