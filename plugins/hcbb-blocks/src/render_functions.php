@@ -83,7 +83,7 @@ function hcbb_render_pages_section( $attributes, $content ) {
 	$sPage2 = json_decode( $attributes['sPage2'], true );
 	$sPage3 = json_decode( $attributes['sPage3'], true );
 
-	$html .= '<div class="wp-block-hcbb-blocks-pages container">';
+	$html .= '<div class="wp-block-hcbb-blocks-pages">';
 	$html .= '	<div class="pages-wrapper">';
 
 	$html .= '		<!-- PAGE: 1 -->';
