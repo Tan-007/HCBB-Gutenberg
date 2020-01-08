@@ -106,9 +106,11 @@ function hcbb_render_pages_section( $attributes, $content ) {
 	$html .= '		<!-- PAGE: 2 -->';
 	$html .= '		<div class="page">';
 	$html .= '			<div class="page__icon">';
-						if ( $attributes['url1'] ) :
-	$html .= '				<img src = "' . $attributes['url1'] . '" />';
-						endif;
+	$html .= '				<div class="icon-container">';
+							if ( $attributes['url1'] ) :
+		$html .= '				<img src = "' . $attributes['url1'] . '" />';
+							endif;
+	$html .= '				</div> <!-- .icon-container -->';
 	$html .= '			</div> <!-- .page__icon -->';
 	$html .= '			<div class="page__title">';
 	$hmtl .= ''.			$sPage2['title']['rendered'];
@@ -121,9 +123,11 @@ function hcbb_render_pages_section( $attributes, $content ) {
 	$html .= '		<!-- PAGE: 3 -->';
 	$html .= '		<div class="page">';
 	$html .= '			<div class="page__icon">';
+	$html .= '				<div class="icon-container">';
 						if ( $attributes['url1'] ) :
 	$html .= '				<img src = "' . $attributes['url1'] . '" />';
 						endif;
+	$html .= '				</div> <!-- .icon-container -->';
 	$html .= '			</div> <!-- .page__icon -->';
 	$html .= '			<div class="page__title">';
 	$hmtl .= ''. 			$sPage3["title"]["rendered"];
