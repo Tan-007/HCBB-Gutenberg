@@ -6,11 +6,16 @@
 
 .wp-block-hcbb-blocks-pages  {
   padding: 0 50px;
+  margin-bottom: 50px;
 
   .pages-wrapper {
     display: grid;
     grid-template-columns: 32% 32% 32%;
     grid-column-gap: 30px;
+
+    a:hover {
+      text-decoration: none;
+    }
 
     @media screen and (max-width: $g-breakpoint-desktop){
       grid-template-columns: 98%;
