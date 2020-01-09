@@ -75,6 +75,16 @@ function hcbb_render_posts_slider( $attributes, $content ) {
 
 }
 
+/**
+ * The function renders out the content for the block 'Pages section'
+ * on the front-end.
+ * 
+ * @param attributes {array} contains attributes
+ * @param content    {array} contains content
+ * 
+ * @return {html} return html to render out
+ * @since 1.6.0
+ */
 function hcbb_render_pages_section( $attributes, $content ) {
 	$html = '';
 	
