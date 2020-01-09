@@ -114,9 +114,9 @@ registerBlockType( 'hcbb-blocks/contact', {
 							placeholder = { __( 'Head Office', 'hcbb-blocks' ) }
 						/>
 
-						<div className = "location">
+						{/* <div className = "location">
 							<span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-						</div>
+						</div> */}
 					</div>
 
 					<div className = "card__details">
@@ -195,9 +195,9 @@ registerBlockType( 'hcbb-blocks/contact', {
 							value       = { headerText }
 						/>
 
-						<div className = "location">
+						{/* <div className = "location">
 							<span><i class="fa fa-map-marker" aria-hidden="true"></i></span>
-						</div>
+						</div> */}
 					</div>
 
 					<div className = "card__details">

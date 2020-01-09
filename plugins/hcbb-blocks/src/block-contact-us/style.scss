@@ -19,7 +19,7 @@
     grid-template-columns: 48% 48%;
     grid-column-gap: 30px;
 
-    @media screen and (max-width: $g-breakpoint-small-tablet) {
+    @media screen and (max-width: $g-breakpoint-desktop) {
         grid-template-columns: 100%;
         grid-template-rows: auto auto;
         grid-column-gap: 0;
@@ -70,6 +70,9 @@
         max-height: 300px;
         box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
 
+        iframe {
+            width: 100%;
+        }
     }
   
 }
