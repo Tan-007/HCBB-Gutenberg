@@ -30,7 +30,7 @@
 
 		<div class="container-fluid">
 			<nav class="navbar navbar-expand-lg navbar-light">
-			
+				
 				<?php 
 					if ( has_custom_logo() ) :
 						the_custom_logo();
@@ -40,9 +40,18 @@
 						<b class="logo__text"><?php _e( 'HCBB Industries', 'hcbb' ) ?></b>
 					</a>
 				<?php endif; ?>	
+
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbarSupportedContent" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
 		
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav mr-auto">
+					<ul class="nav navbar-nav mr-auto">
 						<?php
 						wp_nav_menu( array(
 							'theme_location' => 'menu-1',
