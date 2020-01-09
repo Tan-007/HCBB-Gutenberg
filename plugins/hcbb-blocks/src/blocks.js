@@ -15,3 +15,4 @@ import './block-cover/block-cover.js';
 import './block-posts-slider/block-posts-slider.js';
 import './block-contact-us/block-contact-us.js';
 import './block-pages-section/block-pages-section.js';
+import './block-footer/block-footer.js';
