@@ -11,7 +11,29 @@ import './style.scss';
 
 const { __ } = wp.i18n; // Import __() from wp.i18n
 const { registerBlockType } = wp.blocks; // Import registerBlockType() from wp.blocks
-const { InnerBlocks, RichText } = wp.blockEditor;
+const { PanelBody, ColorPalette } = wp.components; // import ColorPicker from wp.components
+const { InspectorControls } = wp.editor; // Import RichText from wp.block-editor
+
+/**
+ * global functions
+ */
+/**
+ * 
+ * @param {String} url url
+ * @param {String} classOut class of wrapper elem 
+ * @param {String} classIn class of inner elem
+ */
+const getUrlElem = ( url, classOut, classIn ) => {
+	if ( url ) {
+		return( 
+			<li>
+				<a className = { classOut } href = { url }>
+					<i class = { classIn }></i>
+				</a>
+			</li>
+		)
+	}
+}
 /**
  * Register: aa Gutenberg Block.
  *
@@ -44,7 +66,25 @@ registerBlockType( 'hcbb-blocks/footer', {
 
 	// custom attributes
 	attributes: {
+		urlFb: {
+			type: 'string',
+			selector: '.urlFb',
+		},
 
+		urlLn: {
+			type: 'string',
+			selector: '.urlLn',
+		},
+
+		urlTwit: {
+			type: 'string',
+			selector: '.urlTwit',
+		},
+
+		urlGp: {
+			type: 'string',
+			selector: '.urlGp',
+		},
 	},
 	
 
@@ -63,17 +103,76 @@ registerBlockType( 'hcbb-blocks/footer', {
 		// object de-structuring
 		const {
 			attributes: {
+				urlFb, 
+				urlLn,
+				urlTwit,
+				urlGp,
 			},
 			setAttributes,
 			className
 		} = props;
-
 		
-		return (
+		return ([
+			<InspectorControls>
+				<div className = { className }>
+					<PanelBody title = { __( 'Footer links settings', 'hcbb-blocks' ) }>
+
+						<p style = { { marginTop: '10px' } }><strong>{ __( 'Facebook Url:', 'hcbb-blocks' ) }</strong></p>
+						<input
+							style       = { { width: "100%" } }
+							type        = "url"
+							value       = { urlFb }
+							onChange    = { ( newUrl ) => { setAttributes( { urlFb: newUrl.currentTarget.value } ) } }
+							placeholder = "https://www.facebook.com/"
+						/>
+
+						<p style = { { marginTop: '10px' } }><strong>{ __( 'LinkedIn Url:', 'hcbb-blocks' ) }</strong></p>
+						<input
+							style       = { { width: "100%" } }
+							type        = "url"
+							value       = { urlLn }
+							onChange    = { ( newUrl ) => { setAttributes( { urlLn: newUrl.currentTarget.value } ) } }
+							placeholder = "https://www.linkedin.com/"
+						/>
+
+						<p style = { { marginTop: '10px' } }><strong>{ __( 'Twitter Url:', 'hcbb-blocks' ) }</strong></p>
+						<input
+							style       = { { width: "100%" } }
+							type        = "url"
+							value       = { urlTwit }
+							onChange    = { ( newUrl ) => { setAttributes( { urlTwit: newUrl.currentTarget.value } ) } }
+							placeholder = "https://www.twitter.com/"
+						/>
+
+						<p style = { { marginTop: '10px' } }><strong>{ __( 'Google Plus Url:', 'hcbb-blocks' ) }</strong></p>
+						<input
+							style       = { { width: "100%" } }
+							type        = "url"
+							value       = { urlGp }
+							onChange    = { ( newUrl ) => { setAttributes( { urlGp: newUrl.currentTarget.value } ) } }
+							placeholder = "https://www.google.com/"
+						/>
+
+					</PanelBody>
+				</div>
+			</InspectorControls>
+			,
 			<div className = { className }>
-				
+				<div className = "icons-wrapper">
+					<ul className = "icons-list">
+
+						{ getUrlElem( urlFb, "urlFb", "fa fa-facebook" ) }
+
+						{ getUrlElem( urlLn, "urlLn", "fa fa-linkedin" ) }
+
+						{ getUrlElem( urlTwit, "urlTwit", "fa fa-twitter" ) }
+
+						{ getUrlElem( urlGp, "urlGp", "fa fa-google" ) }
+
+					</ul>
+				</div>
 			</div>
-		);
+		]);
 	},
 
 	/**
@@ -92,16 +191,29 @@ registerBlockType( 'hcbb-blocks/footer', {
 		// object de-structuring
 		const {
 			attributes: {
-				
+				urlFb,
+				urlLn,
+				urlTwit,
+				urlGp,
 			},
 			className
 		} = props;
 
-		
-
 		return (
 			<div className = { className }>
-				
+				<div className = "icons-wrapper">
+					<ul className = "icons-list">
+
+						{ getUrlElem( urlFb, "urlFb", "fa fa-facebook" ) }
+
+						{ getUrlElem( urlLn, "urlLn", "fa fa-linkedin" ) }
+
+						{ getUrlElem( urlTwit, "urlTwit", "fa fa-twitter" ) }
+
+						{ getUrlElem( urlGp, "urlGp", "fa fa-google" ) }
+
+					</ul>
+				</div>
 			</div>
 		);
 	},

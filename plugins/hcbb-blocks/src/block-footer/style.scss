@@ -5,5 +5,42 @@
  */
 
 .wp-block-hcbb-blocks-footer {
+    margin-top: 50px;
+    width: 100%;
+
+    .icons-wrapper {
+        overflow: auto;
+        width: 100%;
+        background-color: $c_footer;
+
+        .icons-list {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: auto;
+            margin: 0;
+            padding: 20px 0;
+            list-style-type: none;
+
+            li {
+                overflow: hidden;
+                display: flex;
+                border-radius: 50%;
+                width: 35px;
+                height: 35px;
+                justify-content: center;
+                align-items: center;
+                margin: 5px;
+                float: left;
+                background: $c_footer_icons_back;
+
+                a {
+                    i {
+                        color: $white;
+                    }
+                }
+            }
+        }
+    }
   
 }

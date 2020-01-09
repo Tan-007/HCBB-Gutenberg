@@ -223,6 +223,8 @@ function hcbb_register_category( $categories, $post ) {
  */
 
 function hcbb_section_title_register_fscript() {
+	// font-awesome
+	wp_enqueue_style( 'fa', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
 	
 	// bootstrap
 	wp_enqueue_style( 'bootstrap4', 'https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css' );
@@ -240,6 +242,9 @@ function hcbb_section_title_register_fscript() {
 
 }
 
+function hcbb_enqueue_font_awesome() {
+	wp_enqueue_style( 'fa', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css' );
+}
 
 // Hook: Block assets for block 'section-title'
 add_action( 'init', 'hcbb_section_title_block_assets' );
@@ -249,3 +254,6 @@ add_filter( 'block_categories', 'hcbb_register_category', 10, 2 );
 
 // Hook: front-end scripts
 add_action( 'wp_enqueue_scripts', 'hcbb_section_title_register_fscript' );
+
+// Hook: editor font-awesome
+add_action( 'admin_enqueue_scripts', 'hcbb_enqueue_font_awesome' );

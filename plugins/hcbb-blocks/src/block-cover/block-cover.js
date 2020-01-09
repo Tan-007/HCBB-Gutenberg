@@ -234,7 +234,6 @@ registerBlockType( 'hcbb-blocks/cover', {
 		 * @param {string} newOpacity contains new opacity value
 		 */
 		const onOpacityChange = ( newOpacity ) => {
-			console.log(newOpacity.currentTarget.value);
 			setAttributes( {
 				backOpacity: newOpacity.currentTarget.value
 			});
