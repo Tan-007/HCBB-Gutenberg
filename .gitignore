@@ -16,3 +16,6 @@ themes/blank-theme
 
 # uploads directory
 /uploads
+
+# debulg
+debug.log
