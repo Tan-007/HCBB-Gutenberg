@@ -6,9 +6,14 @@
  */
 
  .wp-block-hcbb-blocks-pages {
+    padding: 0;
     
     .pages-wrapper {
+
+        grid-column-gap: 10px;
+
         .page {
+            padding: 5px;
             border: 2px dotted $cu_header_color;
 
             .page__icon {
