@@ -122,7 +122,10 @@ add_action( 'widgets_init', 'hcbb_widgets_init' );
 function hcbb_scripts() {
 	wp_enqueue_style( 'hcbb-style', get_stylesheet_uri() );
 
-	wp_enqueue_script( 'hcbb-navigation', get_template_directory_uri() . '/js/navigation.js', array(), '20151215', true );
+	// custom styles
+	wp_enqueue_style( 'hcbb-custom', get_template_directory_uri() . '/layouts/main.css' );
+
+	wp_enqueue_script( 'hcbb-navigation', get_template_directory_uri() . '/js/navigation.js', array( 'jquery' ), '20151215', true );
 
 	wp_enqueue_script( 'hcbb-skip-link-focus-fix', get_template_directory_uri() . '/js/skip-link-focus-fix.js', array(), '20151215', true );
 

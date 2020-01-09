@@ -103,4 +103,18 @@
 			}
 		}
 	}( container ) );
+
 } )();
+
+// responsible for changing background color of navigation bar
+jQuery(function( $ ) {
+	$(window).scroll(function() {
+		$masthead = $("#masthead");
+
+		if ( window.pageYOffset > $masthead.outerHeight() ) {
+			$masthead.addClass( "scrolled" );
+		} else {
+			$masthead.removeClass( "scrolled" );
+		}
+	});
+});

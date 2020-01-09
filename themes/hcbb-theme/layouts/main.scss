@@ -1,0 +1,120 @@
+/*
+ * Variables
+ */
+$ff_josefin: 'Josefin Sans', sans-serif;
+$fs_base: 14px;
+
+$white: #FFFFFF;
+$black: #000000;
+$navbar: rgba(22, 76, 131, 0.9);
+$nav_hover: #49c5b6;
+
+/*
+ * Header styles
+ */
+#main {
+    .entry-content {
+        margin-top: 0;
+    }
+}
+
+#masthead {
+    position: fixed;
+    top: 0;
+    left: 0; right: 0;
+    background-color: transparent;
+    z-index: 999;
+    transition: all 0.5s linear;
+
+    &.scrolled {
+        background-color: $navbar;
+
+        .navbar {
+            padding: 10px 0;
+
+            .logo__text {
+                font-size: 1.5 * $fs_base;
+            }
+
+            .navbar-nav {
+                a {
+                    font-size: $fs_base; 
+                }
+            }
+        }
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 20px 0;
+
+        .logo {
+            padding: 0 30px;
+            
+            &:hover {
+                text-decoration: none;
+            }
+
+            .logo__text {
+                color: $white;
+                font-family: $ff_josefin;
+                font-size: 2 * $fs_base;
+
+                // .logo__text 
+            }
+            // .logo 
+        }
+
+        .navbar-collapse {
+            display: inline-block !important;
+            margin-left: auto;
+
+            .navbar-nav {
+
+                ul {
+                    list-style-type: none;
+                    li {
+                        float: left;
+                        margin: 0 5px;
+                        a {
+                            font-family: $ff_josefin;
+                            font-size: $fs_base + 2px;
+                            color: $white;
+                            padding: 15px;
+                            display: block;
+                            text-decoration: none;
+                            // a 
+                        }
+
+                        &::before,
+                        &::after {
+                            content: '';
+                            display: block;
+                            transform: scale(0);
+                            transform-origin: left;
+                            height: 2px;
+                            background: $nav_hover;
+                            transition: 0.5s transform ease-out;
+                        }
+
+                        &::after {
+                            transform-origin: right;
+                        }
+
+                        &:hover::before,
+                        &:hover::after {
+                            transform: scaleX(0.6);
+                        }
+                        // li 
+                    }
+                }
+                // .navbar-nav 
+            }
+            // .navbar-collapse
+        }
+        // .navbar 
+    }
+    // #masthead
+}

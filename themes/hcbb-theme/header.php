@@ -25,34 +25,35 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'hcbb' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<div class="site-branding">
-			<?php
-			the_custom_logo();
-			if ( is_front_page() && is_home() ) :
-				?>
-				<h1 class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></h1>
-				<?php
-			else :
-				?>
-				<p class="site-title"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" rel="home"><?php bloginfo( 'name' ); ?></a></p>
-				<?php
-			endif;
-			$hcbb_description = get_bloginfo( 'description', 'display' );
-			if ( $hcbb_description || is_customize_preview() ) :
-				?>
-				<p class="site-description"><?php echo $hcbb_description; /* WPCS: xss ok. */ ?></p>
-			<?php endif; ?>
-		</div><!-- .site-branding -->
 
-		<nav id="site-navigation" class="main-navigation">
-			<button class="menu-toggle" aria-controls="primary-menu" aria-expanded="false"><?php esc_html_e( 'Primary Menu', 'hcbb' ); ?></button>
-			<?php
-			wp_nav_menu( array(
-				'theme_location' => 'menu-1',
-				'menu_id'        => 'primary-menu',
-			) );
-			?>
-		</nav><!-- #site-navigation -->
+		<!-- Navigation bar starts here -->
+
+		<div class="container-fluid">
+			<nav class="navbar navbar-expand-lg navbar-light">
+			
+				<?php 
+					if ( has_custom_logo() ) :
+						the_custom_logo();
+					else :  
+				?>
+					<a href=" <?php echo esc_url( get_site_url() ); ?> " class="logo">
+						<b class="logo__text"><?php _e( 'HCBB Industries', 'hcbb' ) ?></b>
+					</a>
+				<?php endif; ?>	
+		
+				<div class="collapse navbar-collapse" id="navbarSupportedContent">
+					<ul class="navbar-nav mr-auto">
+						<?php
+						wp_nav_menu( array(
+							'theme_location' => 'menu-1',
+							'menu_id'        => 'primary-menu',
+							'menu_class'     => 'nav-menu',
+						) );
+						?>
+					</ul>
+				</div> <!-- .collapse -->
+			</nav><!-- .navbar -->
+		</div> <!-- .container -->
 	</header><!-- #masthead -->
 
 	<div id="content" class="site-content">

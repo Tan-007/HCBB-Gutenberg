@@ -1,0 +1,110 @@
+/*
+ * Variables
+ */
+/*
+ * Header styles
+ */
+#main .entry-content {
+  margin-top: 0;
+}
+
+#masthead {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  z-index: 999;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+}
+
+#masthead.scrolled {
+  background-color: rgba(22, 76, 131, 0.9);
+}
+
+#masthead.scrolled .navbar {
+  padding: 10px 0;
+}
+
+#masthead.scrolled .navbar .logo__text {
+  font-size: 21px;
+}
+
+#masthead.scrolled .navbar .navbar-nav a {
+  font-size: 14px;
+}
+
+#masthead .navbar {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 0;
+  padding: 20px 0;
+}
+
+#masthead .navbar .logo {
+  padding: 0 30px;
+}
+
+#masthead .navbar .logo:hover {
+  text-decoration: none;
+}
+
+#masthead .navbar .logo .logo__text {
+  color: #FFFFFF;
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 28px;
+}
+
+#masthead .navbar .navbar-collapse {
+  display: inline-block !important;
+  margin-left: auto;
+}
+
+#masthead .navbar .navbar-collapse .navbar-nav ul {
+  list-style-type: none;
+}
+
+#masthead .navbar .navbar-collapse .navbar-nav ul li {
+  float: left;
+  margin: 0 5px;
+}
+
+#masthead .navbar .navbar-collapse .navbar-nav ul li a {
+  font-family: "Josefin Sans", sans-serif;
+  font-size: 16px;
+  color: #FFFFFF;
+  padding: 15px;
+  display: block;
+  text-decoration: none;
+}
+
+#masthead .navbar .navbar-collapse .navbar-nav ul li::before, #masthead .navbar .navbar-collapse .navbar-nav ul li::after {
+  content: '';
+  display: block;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transform-origin: left;
+          transform-origin: left;
+  height: 2px;
+  background: #49c5b6;
+  -webkit-transition: 0.5s -webkit-transform ease-out;
+  transition: 0.5s -webkit-transform ease-out;
+  transition: 0.5s transform ease-out;
+  transition: 0.5s transform ease-out, 0.5s -webkit-transform ease-out;
+}
+
+#masthead .navbar .navbar-collapse .navbar-nav ul li::after {
+  -webkit-transform-origin: right;
+          transform-origin: right;
+}
+
+#masthead .navbar .navbar-collapse .navbar-nav ul li:hover::before, #masthead .navbar .navbar-collapse .navbar-nav ul li:hover::after {
+  -webkit-transform: scaleX(0.6);
+          transform: scaleX(0.6);
+}
+/*# sourceMappingURL=main.css.map */
