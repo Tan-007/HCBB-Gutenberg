@@ -15,6 +15,69 @@ const { MediaUpload } = wp.editor; // import ColorPicker from wp.components
 const { withSelect } = wp.data;
 const { Button, SelectControl } = wp.components;
 
+const getMediaUrl = () => {
+
+}
+
+/**
+ * The function renders the button to upload an image if there is no image
+ * selected.
+ * renders image if an image is already selected. 
+ * 
+ * @param {Object} openEvent contains object related properties
+ * @param {string} url image url
+ * 
+ * @returns {Mixed} JSX
+ * 
+ * @since 1.5.0
+ */
+const getImageButton = ( openEvent, url ) => {
+	if ( url ) {
+		return (
+			<div 
+			className = "icon-container"
+			onClick   = { openEvent }
+			>
+				<img 
+					src       = { url }
+					className = "image"
+					/>
+				<span className = "hover-text">
+					{ __( 'Change Icon', 'hcbb-blocks' ) }
+				</span>
+			</div>
+		);
+	}
+	else {
+		return (
+			<div className = "icon-container">
+				<Button 
+					onClick   = { openEvent }
+					className = "button button-large"
+					>
+					{ __( 'Pick an icon', 'block-image-card' ) }
+				</Button>
+			</div>
+		);
+	}
+};
+
+/**
+ * function generates options for the pages dropdown and returns it
+ * 
+ * @returns {Array} array containing all the options
+ */
+const getSelectControlOptions = ( pages ) => {
+	// value: custom JSON, it's very custom and error prone. I couldn't get to a solution for this problem.
+	// having value: null, would cause JSON.parse() to fail, that's why.
+	let options = [ { value: '{"title":{"rendered":"No title"},"page_excerpt":{"rendered":"Select a page"}}', label: 'Select a Page', default: true } ];
+	pages.map(( page ) => {
+		options.push( { value: JSON.stringify( page ), label: ( '' !== page.title ) ? page.title.rendered : "(No title)" } );
+	})
+	
+	return options;
+}
+		
 
 /**
  * Register: aa Gutenberg Block.
@@ -105,191 +168,126 @@ registerBlockType( 'hcbb-blocks/pages', {
 	 */
 	
 	edit: withSelect( ( select ) => {
-		return {
-			pages: select( 'core' ).getEntityRecords( 'postType', 'page', { status: 'publish', per_page: 30 } )
-		};
-	} )( ( { pages, className, attributes, setAttributes } ) => {
-		
-		const {
-			url1, id1,
-			url2, id2,
-			url3, id3,
-			sPage1, sPage2, sPage3,
-		} = attributes;
-		
-		/**
-		 * The function renders the button to upload an image if there is no image
-		 * selected.
-		 * renders image if an image is already selected. 
-		 * 
-		 * @param {Object} openEvent contains object related properties
-		 * @param {string} url image url
-		 * 
-		 * @returns {Mixed} JSX
-		 * 
-		 * @since 1.5.0
-		 */
-		const getImageButton = ( openEvent, url ) => {
-			if ( url ) {
-				return (
-					<div 
-					className = "icon-container"
-					onClick   = { openEvent }
-					>
-						<img 
-							src       = { url }
-							className = "image"
-							/>
-						<span className = "hover-text">
-							{ __( 'Change Icon', 'hcbb-blocks' ) }
-						</span>
-					</div>
-				);
-			}
-			else {
-				return (
-					<div className = "icon-container">
-						<Button 
-							onClick   = { openEvent }
-							className = "button button-large"
-							>
-							{ __( 'Pick an icon', 'block-image-card' ) }
-						</Button>
-					</div>
-				);
-			}
-		};
-		
-		/**
-		 * function generates options for the pages dropdown and returns it
-		 * 
-		 * @returns {Array} array containing all the options
-		 */
-		const getSelectControlOptions = () => {
-			// value: custom JSON, it's very custom and error prone. I couldn't get to a solution for this problem.
-			// having value: null, would cause JSON.parse() to fail, that's why.
-			let options = [ { value: '{"title":{"rendered":"No title"},"page_excerpt":{"rendered":"Select a page"}}', label: 'Select a Page', default: true } ];
-			pages.map(( page ) => {
-				options.push( { value: JSON.stringify( page ), label: ( '' !== page.title ) ? page.title.rendered : "(No title)" } );
-			})
+			return {
+				data: {
+					pages: select( 'core' ).getEntityRecords( 'postType', 'page', { status: 'publish', per_page: 30 } ),
+				}
+			};
+		} )( ( { data: { pages }, className, attributes, setAttributes } ) => {
+
+			const {
+				url1, id1,
+				url2, id2,
+				url3, id3,
+				sPage1, sPage2, sPage3,
+			} = attributes;
 			
-			return options;
-		}
-		
-		// const getMediaUrl = ( page ) => {
-			// 	if ( page && ( 0 !== JSON.parse(page).featured_media ) ) {
-				// 		const url = 'http://hcbb.test/index.php?rest_route=/wp/v2/media/' + JSON.parse(page).featured_media;
-				// 		fetch( url )
-				// 		.then( response => response.json() )
-				// 		.then( data => { url1 = data.media_details.sizes.thumbnail.source_url } );
-				// 	}
-				// }
+					
+			if ( ! pages ) {
+				return 'Loading...';
+			}
+					
+			if ( pages && pages.length === 0 ) {
+				return 'No posts';
+			}
 				
-				if ( ! pages ) {
-					return 'Loading...';
-				}
-				
-				if ( pages && pages.length === 0 ) {
-					return 'No posts';
-				}
-				
-				return([
-					<div className = { className }>
-				<div className = "pages-wrapper">
+			return([
+				<div className = { className }>
+					<div className = "pages-wrapper">
 
-					{/* Page 1 */}
-					<div className = "page">
+						{/* Page 1 */}
+						<div className = "page">
 
-						<div className = "page__selector">
-							<SelectControl
-								value    = { sPage1 ? sPage1 : null }
-								onChange = { ( page ) => { setAttributes( { sPage1: page } ) } }
-								options  = { getSelectControlOptions() }
+							<div className = "page__selector">
+								<SelectControl
+									value    = { sPage1 ? sPage1 : null }
+									onChange = { ( page ) => { setAttributes( { sPage1: page } ) } }
+									options  = { getSelectControlOptions( pages ) }
 								/>
-						</div>
+							</div>
 
-						<div className = "page__icon">
-							<MediaUpload
-								onSelect     = { media => { setAttributes( { id1: media.id, url1: media.url } ); } }
-								type         = 'image'
-								allowedTypes = { [ 'image', 'image/gif' ] }
-								value        = { id1 }
-								render       = { ( { open } ) => getImageButton( open, url1 ) }
+							<div className = "page__icon">
+								<MediaUpload
+									onSelect     = { media => { setAttributes( { id1: media.id, url1: media.url } ); } }
+									type         = 'image'
+									allowedTypes = { [ 'image', 'image/gif' ] }
+									value        = { id1 }
+									render       = { ( { open } ) => getImageButton( open, url1 ) }
+								/>
+							</div>
+							
+							<div className = "page__title">
+								{ sPage1 ? JSON.parse(sPage1).title.rendered : "" }
+							</div>
+							
+							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
+								( sPage1 && JSON.parse(sPage1).excerpt ) ? JSON.parse(sPage1).excerpt.rendered : "No content" ) } } 
 							/>
+
 						</div>
-						
-						<div className = "page__title">
-							{ sPage1 ? JSON.parse(sPage1).title.rendered : "" }
-						</div>
-						
-						<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
-							( sPage1 && JSON.parse(sPage1).excerpt ) ? JSON.parse(sPage1).excerpt.rendered : "No content" ) } } 
-						/>
+							
+						{/* Page 2 */}
+						<div className = "page">
 
-					</div>
-						
-					{/* Page 2 */}
-					<div className = "page">
+							<div className = "page__selector">
+								<SelectControl
+									value    = { sPage2 ? sPage2 : null }
+									onChange = { ( page ) => { setAttributes( { sPage2: page } ) } }
+									options  = { getSelectControlOptions( pages ) }
+								/>
+							</div>
 
-						<div className = "page__selector">
-							<SelectControl
-								value    = { sPage2 ? sPage2 : null }
-								onChange = { ( page ) => { setAttributes( { sPage2: page } ) } }
-								options  = { getSelectControlOptions() }
-							/>
-						</div>
+							<div className = "page__icon">
+								<MediaUpload
+									onSelect     = { media => { setAttributes( { id2: media.id, url2: media.url } ); } }
+									type         = 'image'
+									allowedTypes = { [ 'image', 'image/gif' ] }
+									value        = { id2 }
+									render       = { ( { open } ) => getImageButton( open, url2 ) }
+								/>
+							</div>
 
-						<div className = "page__icon">
-							<MediaUpload
-								onSelect     = { media => { setAttributes( { id2: media.id, url2: media.url } ); } }
-								type         = 'image'
-								allowedTypes = { [ 'image', 'image/gif' ] }
-								value        = { id2 }
-								render       = { ( { open } ) => getImageButton( open, url2 ) }
-							/>
-						</div>
+							<div className = "page__title">
+								{ sPage2 ? JSON.parse(sPage2).title.rendered : "" }
+							</div>
 
-						<div className = "page__title">
-							{ sPage2 ? JSON.parse(sPage2).title.rendered : "" }
-						</div>
-
-						<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
-							( sPage2 && JSON.parse(sPage2).excerpt ) ? JSON.parse(sPage2).excerpt.rendered : "No content" ) } } 
-						/>
-					</div>
-
-					{/* Page 3 */}
-					<div className = "page">
-
-						<div className = "page__selector">
-							<SelectControl
-								value    = { sPage3 ? sPage3 : null }
-								onChange = { ( page ) => { setAttributes( { sPage3: page } ) } }
-								options  = { getSelectControlOptions() }
+							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
+								( sPage2 && JSON.parse(sPage2).excerpt ) ? JSON.parse(sPage2).excerpt.rendered : "No content" ) } } 
 							/>
 						</div>
 
-						<div className = "page__icon">
-							<MediaUpload
-								onSelect     = { media => { setAttributes( { id3: media.id, url3: media.url } ); } }
-								type         = 'image'
-								allowedTypes = { [ 'image', 'image/gif' ] }
-								value        = { id3 }
-								render       = { ( { open } ) => getImageButton( open, url3 ) }
+						{/* Page 3 */}
+						<div className = "page">
+
+							<div className = "page__selector">
+								<SelectControl
+									value    = { sPage3 ? sPage3 : null }
+									onChange = { ( page ) => { setAttributes( { sPage3: page } ) } }
+									options  = { getSelectControlOptions( pages ) }
+								/>
+							</div>
+
+							<div className = "page__icon">
+								<MediaUpload
+									onSelect     = { media => { setAttributes( { id3: media.id, url3: media.url } ); } }
+									type         = 'image'
+									allowedTypes = { [ 'image', 'image/gif' ] }
+									value        = { id3 }
+									render       = { ( { open } ) => getImageButton( open, url3 ) }
+								/>
+							</div>
+
+							<div className = "page__title">
+								{ sPage3 ? JSON.parse( sPage3 ).title.rendered : "" }
+							</div>
+
+							<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
+								( sPage3 && JSON.parse(sPage3).excerpt ) ? JSON.parse(sPage3).excerpt.rendered : "No content" ) } } 
 							/>
 						</div>
-
-						<div className = "page__title">
-							{ sPage3 ? JSON.parse( sPage3 ).title.rendered : "" }
-						</div>
-
-						<div className = "page__excerpt" dangerouslySetInnerHTML = { { __html: ( 
-							( sPage3 && JSON.parse(sPage3).excerpt ) ? JSON.parse(sPage3).excerpt.rendered : "No content" ) } } 
-						/>
 					</div>
 				</div>
-			</div>
-		]);
+			]);
 		} 
 	),
 
