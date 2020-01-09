@@ -12,6 +12,16 @@
     grid-template-columns: 32% 32% 32%;
     grid-column-gap: 30px;
 
+    @media screen and (max-width: $g-breakpoint-desktop){
+      grid-template-columns: 98%;
+      grid-template-rows: 32% 32% 32%;
+      grid-row-gap: 30px;
+
+      .page__excerpt {
+        padding-bottom: 20px;
+      }
+    }
+
     a {
       color: $fc_default;
       font-size: $fs_base;
@@ -24,6 +34,8 @@
 
     .page {
       padding: 10px;
+      margin: 0;
+      height: 100%;
       box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.5);
       transition: 0.2s box-shadow ease-out;
 

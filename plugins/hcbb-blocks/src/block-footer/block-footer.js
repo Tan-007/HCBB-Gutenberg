@@ -26,11 +26,11 @@ const { InspectorControls } = wp.editor; // Import RichText from wp.block-editor
 const getUrlElem = ( url, classOut, classIn ) => {
 	if ( url ) {
 		return( 
-			<li>
-				<a className = { classOut } href = { url }>
+			<a className = { classOut } href = { url }>
+				<li>
 					<i class = { classIn }></i>
-				</a>
-			</li>
+				</li>
+			</a>
 		)
 	}
 }
