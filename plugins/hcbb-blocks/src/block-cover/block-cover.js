@@ -396,6 +396,9 @@ registerBlockType( 'hcbb-blocks/cover', {
 						/>
 					</div>
 				</div>
+					<div id = "mouse-icon">
+						<div></div>
+					</div>
 			</div>
 		);
 	},

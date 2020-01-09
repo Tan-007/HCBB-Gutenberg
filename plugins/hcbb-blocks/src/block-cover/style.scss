@@ -5,6 +5,7 @@
  */
 
 .wp-block-hcbb-blocks-cover  {
+  position: relative;
   margin: 0;
 
   .block-wrapper {
@@ -47,3 +48,50 @@
   }
 
 }
+
+#mouse-icon {
+  display: flex;
+  justify-content: center;
+	height: 40px;
+	width: 21px;
+	position: absolute;
+	bottom: 0;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border: 3px solid #FFF;
+  border-radius: 25px;
+
+  &:hover {
+    cursor: pointer;
+
+    div {
+      animation: 0.8s mouse-hover infinite ease-out;
+    }
+  }
+  
+  div {
+    background-color: #FFF;
+    height: 10px;
+    width: 21px;
+    position: absolute;
+    width: 3px;
+    top: 3px;
+    left: 50%;
+    transform: translateX(-50%);
+    animation: 1.5s mouse-hover infinite ease-out;
+  }
+}
+
+@keyframes mouse-hover {
+	0% {
+		opacity: 1;
+	}
+	80% {
+		opacity: 0.6;
+	}
+	100% {
+		opacity: 0;
+		top: 15px;
+	}
+}
+
