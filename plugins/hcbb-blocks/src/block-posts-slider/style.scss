@@ -33,18 +33,22 @@
                 justify-content: center;
 
                 @media screen and (max-width: $g-breakpoint-desktop) {
-                    grid-template-columns: $block_width - 50px $block_width - 50px $block_width - 50px;
-                    grid-template-rows: $block_height - 50px $block_height - 50px;
+                    grid-template-columns: $block_width - 30px $block_width - 30px $block_width - 30px;
+                    grid-template-rows: $block_height - 30px $block_height - 30px;
                 }
 
                 @media screen and (max-width: $g-breakpoint-tablet) {
                     grid-template-columns: $block_width - 50px $block_width - 50px;
                     grid-template-rows: $block_height - 50px $block_height - 50px $block_height - 50px;
+                    grid-column-gap: 50px;
+                    grid-row-gap: 50px;
                 }
                 
                 @media screen and (max-width: $g-breakpoint-mobile) {
-                    grid-template-columns: $block_width - 100px $block_width - 100px;
-                    grid-template-rows: $block_height - 100px $block_height - 100px $block_height - 100px;
+                    grid-template-columns: $block_width - 70px $block_width - 70px;
+                    grid-template-rows: $block_height - 70px $block_height - 70px $block_height - 70px;
+                    grid-column-gap: 30px;
+                    grid-row-gap: 30px;
                     
                 }
                 .grid__item {
@@ -60,13 +64,13 @@
                     box-shadow: 0 8px 11px rgba(0, 0, 0, 0.5);
 
                     @media screen and (max-width: $g-breakpoint-desktop) {
-                        height: $block_height - 50px;
-                        width: $block_width - 50px;
+                        height: $block_height - 30px;
+                        width: $block_width - 30px;
                     }
 
                     @media screen and (max-width: $g-breakpoint-mobile) {
-                        height: $block_height - 100px;
-                        width: $block_width - 100px;
+                        height: $block_height - 70px;
+                        width: $block_width - 70px;
                     }
                 }
 

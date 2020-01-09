@@ -21,25 +21,33 @@
             margin: 0;
             padding: 20px 0;
             list-style-type: none;
-
-            li {
-                overflow: hidden;
-                display: flex;
-                border-radius: 50%;
-                width: 35px;
-                height: 35px;
-                justify-content: center;
-                align-items: center;
-                margin: 5px;
-                float: left;
-                background: $c_footer_icons_back;
-
-                a {
+            a {
+                li {
+                    overflow: hidden;
+                    display: flex;
+                    border-radius: 50%;
+                    width: 35px;
+                    height: 35px;
+                    justify-content: center;
+                    align-items: center;
+                    margin: 5px;
+                    float: left;
+                    background: $c_footer_icons_back;
+                    
+                    &:hover {
+                        background: $white;
+                        i {
+                            color: $c_footer_icons_back;
+                        }
+                    }
                     i {
+                        font-size: $fs_base;
                         color: $white;
                     }
                 }
+    
             }
+
         }
     }
   
